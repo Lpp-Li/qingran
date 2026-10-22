@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>轻燃 · 我的减脂日常</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3l8.5 7.5"/><path d="M5.5 9.5v10h13v-10"/><path d="M9.5 19.5v-5h5v5"/></symbol>
+    <symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 11h18c0 4.4-3.6 8-8 8h-2c-4.4 0-8-3.6-8-8Z"/><path d="M8 7.5c0-1.2 1-2 2-2.6M12 7c0-1.5 1.2-2.5 2.4-3M16 7.5c0-.8.5-1.4 1-1.8"/><path d="M4 21h16"/></symbol>
+    <symbol id="i-plan" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="16" rx="3"/><path d="M7.5 3v3M16.5 3v3M3.5 9.5h17"/><path d="m8 14 2 2 4-4"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.5"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.5"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.5"/><rect x="14" y="14" width="6.5" height="6.5" rx="1.5"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4v-.2a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.1 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H2.7v-4h.2a1.7 1.7 0 0 0 1.6-1.1 1.7 1.7 0 0 0-.3-1.9L4.1 7 6.9 4.2l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.7 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4h-.2a1.7 1.7 0 0 0-1.5 1Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m5 9 7 7 7-7"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6.5 7l1 14h9l1-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 22c4 0 7-2.8 7-6.8 0-3.2-2.1-5.4-3.9-7.7C13.9 5.8 13 3.7 13.2 2c-2.5 1.2-5 4-5 7.2 0 1.5.6 2.7 1.4 3.5-.4-1.8.2-3.3 1.4-4.4-.2 2.4 1.4 3.6 2.5 5.2.6.9.9 1.8.9 2.7 0 1.5-.9 2.5-2 3.1"/><path d="M8.4 15.4C7.5 16.2 7 17.2 7 18.4 7 20.5 8.9 22 12 22"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="m15 4 5 5-2.5 1.2-3.7 3.7-.3 3.3-1.5 1.5-2-2-4.2 4.2-.8-.8 4.2-4.2-2-2L9 12.4l3.3-.3 3.7-3.7Z"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="17" rx="4"/><path d="M8 10a4.2 4.2 0 0 1 8 0"/><path d="m12 10 2.2-2.2"/><circle cx="12" cy="10" r=".8" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="11" rx="3"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/><circle cx="12" cy="15.5" r="1.2"/></symbol>
+    <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="11" rx="3"/><path d="M8 10V7.5a4 4 0 0 1 7.7-1.5"/><circle cx="12" cy="15.5" r="1.2"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h13M13 3l5 5-5 5"/><path d="M20 16H7M11 11l-5 5 5 5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 18v2h16v-2"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 18v2h16v-2"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 2 1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8Z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2.5"/><path d="M16 8V5.5A2.5 2.5 0 0 0 13.5 3h-9A2.5 2.5 0 0 0 2 5.5v10A2.5 2.5 0 0 0 4.5 18H8"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M7.5 3v4M16.5 3v4M3.5 10h17"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.2" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M21 3C12 3 4.5 7 4.5 14.5A6.5 6.5 0 0 0 11 21c7.5 0 10-8.5 10-18Z"/><path d="M3 22c2.5-7 7-11.5 13-15"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5Z"/><path d="M8 3v6h7V3M8 21v-7h8v7"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4Z"/><path d="M12 9v5M12 17.5v.2"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#/home" aria-label="轻燃首页">
+        <span class="brand-mark">
+          <svg viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-opacity=".22"/>
+            <path d="M20 31c5.4 0 9-3.7 9-8.8 0-4.2-2.8-7.2-5.1-10C21.9 9.6 21 7.3 21.2 5c-3.5 1.7-7 5.5-7 9.7 0 2 .8 3.7 1.9 4.7-.6-2.4.3-4.4 1.9-5.8-.2 3.1 2.1 4.5 3.5 6.8.8 1.3 1.1 2.5 1.1 3.7 0 1.9-1.2 3.2-2.6 3.9" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="brand-type"><strong>轻燃</strong><small>QINGRAN</small></span>
+      </a>
+
+      <div class="sidebar-section-label">我的空间</div>
+      <nav class="nav" aria-label="主导航">
+        <a href="#/home" class="nav-item" data-route="home">
+          <svg class="icon"><use href="#i-home"/></svg><span>首页总览</span><em class="nav-dot"></em>
+        </a>
+        <a href="#/food" class="nav-item" data-route="food">
+          <svg class="icon"><use href="#i-bowl"/></svg><span>今日饮食</span><em class="nav-dot"></em>
+        </a>
+        <a href="#/plan" class="nav-item" data-route="plan">
+          <svg class="icon"><use href="#i-plan"/></svg><span>饮食计划</span><em class="nav-dot"></em>
+        </a>
+        <a href="#/library" class="nav-item" data-route="library">
+          <svg class="icon"><use href="#i-grid"/></svg><span>食物分类</span><em class="nav-dot"></em>
+        </a>
+        <a href="#/data" class="nav-item" data-route="data">
+          <svg class="icon"><use href="#i-chart"/></svg><span>数据与设置</span><em class="nav-dot"></em>
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="local-note">
+          <span class="local-note-icon"><svg class="icon"><use href="#i-lock"/></svg></span>
+          <div><strong>只属于这台电脑</strong><small>数据本地保存，不会上传</small></div>
+        </div>
+        <button class="profile-chip" id="sidebarProfile" type="button" aria-label="查看个人资料">
+          <span class="avatar" id="avatarInitial">轻</span>
+          <span class="profile-meta"><strong id="profileName">我的轻燃</strong><small id="profileGoal">正在建立目标</small></span>
+          <svg class="icon profile-arrow"><use href="#i-chevron-right"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <span class="topbar-date" id="topbarDate"></span>
+          <span class="save-pill" id="savePill"><span class="save-dot"></span><span>本地已保存</span></span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm topbar-memo" id="topbarMemo" type="button">
+            <svg class="icon"><use href="#i-pin"/></svg><span>随手记</span>
+          </button>
+          <button class="btn btn-primary btn-sm" id="globalAddFood" type="button">
+            <svg class="icon"><use href="#i-plus"/></svg><span>记录饮食</span><kbd>N</kbd>
+          </button>
+          <button class="icon-btn" id="topSettings" type="button" aria-label="打开设置">
+            <svg class="icon"><use href="#i-settings"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="app-main" id="appMain" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div id="overlayRoot"></div>
+  <div id="modalRoot"></div>
+  <div id="toastRoot" class="toast-root" aria-live="polite"></div>
+  <div id="onboardingRoot"></div>
+
+  <script src="data.js"></script>
+  <script src="core.js"></script>
+  <script src="views.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# 本机个人数据，绝不提交
+data/
+
+# 本地运行与打包产物
+node.exe
+*.zip
+*.log
+.chrome-*/
+_preview*
+
+# 系统生成文件
+Thumbs.db
+desktop.ini
+.DS_Store

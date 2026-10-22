@@ -151,6 +151,13 @@
 
   A.state = normalizeState(A.loadState());
   A.storageAvailable = true;
+  A.isPwa = (() => {
+    try {
+      if (new URLSearchParams(location.search).has("pwa")) return true;
+    } catch (err) {}
+    if (location.protocol === "https:") return true;
+    return !/^(127\.0\.0\.1|localhost|\[::1\])$/i.test(location.hostname);
+  })();
 
   A.saveState = () => {
     A.state.meta.updatedAt = new Date().toISOString();
@@ -177,10 +184,10 @@
     return localOk;
   };
 
-  /* 数据同时写入本机 data/state.json。服务没有启动时静默退回浏览器存储。 */
+  /* 数据同时写入本机 data/state.json。PWA 只使用设备本地存储。 */
   A.serverReachable = false;
   A.queueServerSave = () => {
-    if (location.protocol === "file:") return;
+    if (A.isPwa || location.protocol === "file:") return;
     window.clearTimeout(A._serverSaveTimer);
     A._serverSaveTimer = window.setTimeout(async () => {
       try {
@@ -197,6 +204,7 @@
   };
 
   A.syncFromServer = async () => {
+    if (A.isPwa) return { restored: false, reason: "pwa" };
     if (location.protocol === "file:") return { restored: false, reason: "file" };
     try {
       const res = await fetch("/api/state", { cache: "no-store" });

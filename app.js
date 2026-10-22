@@ -693,6 +693,7 @@
     A.ui.planDate = A.todayISO();
     renderApp({ scrollTop: 0 });
     toast("目标已建立。今天就从第一餐开始。");
+    window.dispatchEvent(new CustomEvent("qingran:onboarded"));
   }
 
   function renderOnboarding() {
@@ -806,7 +807,7 @@
             <div class="onboarding-body">${stepContent}</div>
             <div class="onboarding-foot">
               <div class="left">
-                ${step > 1 ? `<button class="btn btn-ghost btn-sm" type="button" data-action="ob-back">${icon("arrow-left")} 上一步</button>` : `<span class="privacy-note">${icon("lock")} 只保存在本机</span>`}
+                ${step > 1 ? `<button class="btn btn-ghost btn-sm" type="button" data-action="ob-back">${icon("arrow-left")} 上一步</button>` : `<span class="privacy-note">${icon("lock")} ${A.isPwa ? "只保存在这台手机" : "只保存在本机"}</span>`}
               </div>
               <button class="btn btn-primary" type="button" data-action="${step === 3 ? "ob-finish" : "ob-next"}">${step === 3 ? "开始使用" : "下一步"} ${icon(step === 3 ? "check" : "arrow-right")}</button>
             </div>

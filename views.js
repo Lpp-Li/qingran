@@ -703,7 +703,7 @@
       <section class="page page-data">
         <div class="page-head">
           <div class="page-head-copy">
-            <div class="eyebrow"><span class="line"></span>数据与设置 · 只在本机</div>
+            <div class="eyebrow"><span class="line"></span>数据与设置 · ${A.isPwa ? "只在当前设备" : "只在本机"}</div>
             <h1>身体会记得你的坚持</h1>
             <p class="page-sub">不追单日数字，看一段时间的趋势。</p>
           </div>
@@ -861,7 +861,7 @@
       <form id="settingsForm" class="settings-form" novalidate>
         <section class="card form-section">
           <div class="form-section-head">
-            <div><h2>基本信息</h2><p>用于估算你的基础代谢和每日目标。只保存在本机。</p></div>
+            <div><h2>基本信息</h2><p>用于估算你的基础代谢和每日目标。${A.isPwa ? "只保存在当前设备。" : "只保存在本机。"}</p></div>
             <span class="pill green">${p.sex === "male" ? "男性" : "女性"} · ${p.age} 岁</span>
           </div>
           <div class="form-grid">
@@ -919,7 +919,7 @@
         </section>
 
         <div class="form-actions">
-          <span class="privacy-note">${icon("lock")} 修改只保存在这台电脑</span>
+          <span class="privacy-note">${icon("lock")} ${A.isPwa ? "修改只保存在这台手机" : "修改只保存在这台电脑"}</span>
           <button class="btn btn-primary" type="submit">${icon("check")} 保存设置</button>
         </div>
       </form>`;
@@ -943,11 +943,14 @@
     })();
     const kb = (new Blob([raw]).size / 1024).toFixed(1);
     const count = A.state.weights.length + A.state.memos.length + Object.keys(A.state.days).length + A.state.customFoods.length;
+    const pwa = !!A.isPwa;
     return `
       <div class="data-manage">
         <section class="card manage-card">
           <h2>本地数据与备份</h2>
-          <p>你的记录同时保存在这个浏览器和本机 <code style="font-size:9px">data\\state.json</code> 数据文件里，不会上传。每天第一次保存时还会留一份自动备份。</p>
+          <p>${pwa
+            ? "你的记录只保存在当前设备的本地存储里，不会上传。系统清理浏览器数据或卸载应用时可能删除记录，请定期导出备份。"
+            : "你的记录同时保存在这个浏览器和本机 <code style=\"font-size:9px\">data\\state.json</code> 数据文件里，不会上传。每天第一次保存时还会留一份自动备份。"}</p>
           <div class="storage-meter">
             <div class="storage-meter-head"><span>当前数据占用</span><strong>${kb} KB · ${count} 条内容</strong></div>
             <div class="storage-track"><span class="storage-fill" style="width:${A.clamp((Number(kb) / 5120) * 100, 2, 100)}%"></span></div>
@@ -971,8 +974,8 @@
         <section class="card manage-card">
           <h2>关于轻燃</h2>
           <div class="about-list">
-            <div class="about-row"><span>版本</span><strong>1.0 · 本地版</strong></div>
-            <div class="about-row"><span>数据位置</span><strong>本机 data\\state.json + 浏览器缓存</strong></div>
+            <div class="about-row"><span>版本</span><strong>1.0 · ${pwa ? "手机 PWA" : "本地版"}</strong></div>
+            <div class="about-row"><span>数据位置</span><strong>${pwa ? "当前设备本地存储" : "本机 data\\state.json + 浏览器缓存"}</strong></div>
             <div class="about-row"><span>联网</span><strong>不需要</strong></div>
             <div class="about-row"><span>营养数据</span><strong>常见参考值，非医疗建议</strong></div>
           </div>
@@ -981,10 +984,10 @@
         <section class="card manage-card">
           <h2>使用说明</h2>
           <div class="about-list">
-            <div class="about-row"><span>快捷记录</span><strong>按 N 打开食物搜索</strong></div>
-            <div class="about-row"><span>快速保存备忘</span><strong>Ctrl / ⌘ + Enter</strong></div>
-            <div class="about-row"><span>关闭弹窗</span><strong>Esc</strong></div>
-            <div class="about-row"><span>切换页面</span><strong>左侧导航</strong></div>
+            <div class="about-row"><span>切换页面</span><strong>${pwa ? "底部导航" : "左侧导航"}</strong></div>
+            <div class="about-row"><span>关闭弹窗</span><strong>${pwa ? "点右上角 ×" : "Esc"}</strong></div>
+            <div class="about-row"><span>紧急找回</span><strong>先导出备份，再导入新设备</strong></div>
+            <div class="about-row"><span>安装到手机</span><strong>${pwa ? "浏览器菜单 → 添加到主屏幕" : "双击启动器打开"}</strong></div>
           </div>
         </section>
       </div>`;
